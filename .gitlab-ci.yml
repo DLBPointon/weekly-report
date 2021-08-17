@@ -12,6 +12,7 @@ variables:
     JIRA_PASS: $JIRA_PASS
     JIRA_USER: $JIRA_USER
     SLACK_HOOK: $SLACK_HOOK
+    WEEKSAGO: $WEEKSAGO
 
 before_script:
     - echo $PATH
@@ -26,5 +27,5 @@ mrbtk:
   tags:
    - autoscale
   script:
-    - python3 reportv2.py
+    - python3 reportv2.py ${WEEKSAGO}
 
