@@ -27,5 +27,5 @@ mrbtk:
   tags:
    - autoscale
   script:
-    - python3 reportv2.py ${WEEKSAGO}
+    - python3 reportv3.py ${WEEKSAGO}
 
