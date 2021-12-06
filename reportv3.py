@@ -74,15 +74,15 @@ def authorise(project, user, password):
 
 def make_json(project, BASE_MESSAGE, item_dict, ticket_other, ticket_rc, ticket_grit, stat_today, stat_submitted):
     list_of_items = ''
-    message_package = f'|----- For {project} START-----|\n' + \
-                      f'Nothing to see for this project!\n' + \
+    message_package = f'|----- For {project[3:-1]} START-----|\n' + \
+                      f'\tNothing to see for this project!\n' + \
                       f'|=================================================|\n'
     empty = True
     for i, ii in item_dict.items():
         if len(item_dict.items()) >= 1:
             list_of_items += (f'  {i} | {ii[-2]} - {ii[-1]}' + '\n')
 
-            message_package = f'|----- For {project} START-----|\n' + \
+            message_package = f'|----- For {project[3:-1]} START-----|\n' + \
                 f'|=================================================|\n' + \
                 f'{list_of_items}\n' + \
                 f'|=================================================|\n' + \
@@ -159,7 +159,7 @@ def main():
     user, passw, slack = dotloader()
     project_list = ['= "Darwin"', '= "VGP+"', '= "VGP"', '= "ASG"', '= "ERGA"', '= "Faculty"', '= "Other"']
     for i in project_list:
-        print(f'---RUNNING PROJECT{i}---')
+        print(f'---RUNNING PROJECT{i[3:-1]}---')
         proj_len, item_dict, ticket_other, ticket_rc, ticket_grit,\
         stat_today, stat_submitted, auth_jira = authorise(i, user, passw)
         message, empty = make_json(i, BASE_MESSAGE, item_dict, ticket_other, ticket_rc, ticket_grit, stat_today, stat_submitted)
@@ -174,7 +174,6 @@ def main():
     final_message = BASE_MESSAGE + f'|----- Miss Minutes Report for {date.today()} END -----|' + \
                     '"}'
     print(final_message)
-
     post_it(final_message, slack)
 
 
