@@ -16,7 +16,7 @@ variables:
 
 before_script:
     - echo $PATH
-    - apt-get update -qq && apt-get install -y -qq curl python3.8 python3-pip
+    - apt-get update -qq && apt-get install -y python3.9 && apt-get install -y python3-pip
     - python3 -v
     - pip3 install jira
     - pip3 install datetime
