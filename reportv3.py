@@ -14,7 +14,7 @@ def dotloader():
 
 
 def authorise(project, user, password):
-    jira = "https://grit-jira.sanger.ac.uk"
+    jira = "https://jira.sanger.ac.uk"
     auth_jira = JIRA(jira, basic_auth=(user, password))
     item_dict = {}
     item_list = []
